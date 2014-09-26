@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yo!</title>
+    <!--<link rel="shortcut icon" type="image/icon" href="images/triangle.ico" />-->
+    <link rel="icon" type="image/png" href="images/triangles.png" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Oppa what's your style</h1>
+        <p>Pick your  different style</p>
+    </header>
+    <div class="wrapper">
+        <nav id="allstyles">
+            <ul id="style-list">
+                <li><a href="#github">github</a></li>
+                <li><a href="#gotham">gotham</a></li>
+                <li class="active"><a href="#gangam">gangnam</a></li>
+                <li><a href="#cat">cat</a></li>
+                <li><a href="#watson">watson</a></li>
+                <li><a href="#wonka">wonka</a></li>
+            </ul>
+        </nav>
+
+        <div id="style-images">
+            <section class="inactive">
+                <img src="images/github.png" alt="github style" />
+            </section>
+
+            <section class="inactive">
+                <img src="images/gotham.gif" alt="gotham style" />
+            </section>
+
+            <section class="inactive">
+                <img src="images/gangnam.gif" alt="gangnam style" />
+            </section>
+
+            <section class="inactive">
+                <img src="images/cat.gif" alt="cat style" />
+            </section>
+
+            <section class="inactive">
+                <img src="images/watson.gif" alt="watson style" />
+            </section>
+
+            <section class="inactive">
+                <img src="images/wonka.gif" alt="wonka style" />
+            </section>
+        </div>
+        <div class="push"></div>
+    </div>
+    <footer>
+        <p>yay</p>
+    </footer>
+</body>
+<script>
+    (function ($) {
+        $.fn.extend({
+            showHide: function () {
+                $(this).animate( {opacity: 1}, 500 );
+                return this;
+            }
+        });
+
+        $('.inactive').hide();
+        var $images = $('#style-images');
+        var $list = $('#style-list');
+        $list.show();
+        $images.children().eq(0).siblings().hide();
+
+        $list.on('click', 'li', function (e) {
+            if (! $(this).hasClass('active')) {
+                $(this).addClass('active').siblings().removeClass('active');
+                var id = $(this).index() - 6;
+                $images.children('section').eq(id).show().siblings().hide();
+            }
+        })
+    }) (jQuery);
+</script>
+
+</html>
+
